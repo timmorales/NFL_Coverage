@@ -1,0 +1,40 @@
+---
+title: "NFL Data Cleaning"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+setwd("/Users/timmorales/Documents/GitHub/NFL_Coverage/nfl-big-data-bowl-2021")
+player <- read.csv("players.csv")
+plays <- read.csv("plays.csv")
+
+third_and_long <- plays %>%
+  filter(down == 3 & yardsToGo > 7)
+
+w1 <- read.csv("week1.csv")
+w1 <- w1 %>%
+  filter(event == "ball_snap")
+
+week1tal <- left_join(third_and_long, w1, by = c("playId", "gameId"))
+
+
+w2 <- read.csv("week2.csv")
+w3 <- read.csv("week3.csv")
+w4 <- read.csv("week4.csv")
+w5 <- read.csv("week5.csv")
+w6 <- read.csv("week6.csv")
+w7 <- read.csv("week7.csv")
+w8 <- read.csv("week8.csv")
+w9 <- read.csv("week9.csv")
+w10 <- read.csv("week10.csv")
+w11 <- read.csv("week11.csv")
+w12 <- read.csv("week12.csv")
+w13 <- read.csv("week13.csv")
+w14 <- read.csv("week14.csv")
+w15 <- read.csv("week15.csv")
+w16 <- read.csv("week16.csv")
+
+
+
+```
