@@ -8,33 +8,36 @@ library(tidyverse)
 setwd("/Users/timmorales/Documents/GitHub/NFL_Coverage/nfl-big-data-bowl-2021")
 player <- read.csv("players.csv")
 plays <- read.csv("plays.csv")
+df <- read.csv("downANDdist.csv")
+```
 
-third_and_long <- plays %>%
-  filter(down == 3 & yardsToGo > 7)
+# To Do List 
 
-w1 <- read.csv("week1.csv")
-w1 <- w1 %>%
-  filter(event == "ball_snap")
-
-week1tal <- left_join(third_and_long, w1, by = c("playId", "gameId"))
+* Identify reciever formations (bunch, trips, etc)
+* Identify press coverage 
+* Identify closest reciever
+* Identify the field vs the boundary or the X/Y reciever 
 
 
-w2 <- read.csv("week2.csv")
-w3 <- read.csv("week3.csv")
-w4 <- read.csv("week4.csv")
-w5 <- read.csv("week5.csv")
-w6 <- read.csv("week6.csv")
-w7 <- read.csv("week7.csv")
-w8 <- read.csv("week8.csv")
-w9 <- read.csv("week9.csv")
-w10 <- read.csv("week10.csv")
-w11 <- read.csv("week11.csv")
-w12 <- read.csv("week12.csv")
-w13 <- read.csv("week13.csv")
-w14 <- read.csv("week14.csv")
-w15 <- read.csv("week15.csv")
-w16 <- read.csv("week16.csv")
+```{r}
+df <-  df %>%
+  mutate(
+    rbs = substr(personnelO, str_locate(personnelO, "RB")- 3,str_locate(personnelO, "RB")-2),
+    tes = substr(personnelO, str_locate(personnelO, "TE")- 3,str_locate(personnelO, "TE")-2),
+    wrs = substr(personnelO, str_locate(personnelO, "WR")- 3,str_locate(personnelO, "WR")-2),
+    dbs = substr(personnelO, str_locate(personnelD, "DB")- 3,str_locate(personnelD, "DB")-2),
+    lbs = substr(personnelO, str_locate(personnelD, "LB")- 3,str_locate(personnelD, "LB")-2),
+    dls = substr(personnelO, str_locate(personnelD, "DL")- 3,str_locate(personnelD, "DL")-2),
+    converted = ifelse(yardsToGo <= playResult, 1,0),
+    sob = ifelse(position %in% c("FS", "SS","CB", "MLB", "OLB", "DB", "DE", "DT", "ILB","LB", "S", "NT"),"d","o"),
+    offense_home = ifelse(((sob == "o" & team == "home") | (sob == "d" & team == "away")),1, 0),
+    yards_to_gl = ifelse(possessionTeam == yardlineSide, yardlineNumber, (50 + (50-yardlineNumber))))
 
+
+test <- df %>%
+  group_by("gameId","playId")
+
+levels(as.factor(df$position))
 
 
 ```

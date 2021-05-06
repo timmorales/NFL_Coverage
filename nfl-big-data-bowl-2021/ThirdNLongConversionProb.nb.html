@@ -1751,27 +1751,64 @@ summary {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbmBgYCJ9 -->
-<pre class="r"><code>library(tidyverse)
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5gYGAifQ== -->
+<pre class="r"><code>library(tidyverse)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUmVnaXN0ZXJlZCBTMyBtZXRob2RzIG92ZXJ3cml0dGVuIGJ5ICdkYnBseXInOlxuICBtZXRob2QgICAgICAgICBmcm9tXG4gIHByaW50LnRibF9sYXp5ICAgICBcbiAgcHJpbnQudGJsX3NxbCAgICAgIFxuXHUwMDFiWzM3beKUgOKUgCBcdTAwMWJbMW1BdHRhY2hpbmcgcGFja2FnZXNcdTAwMWJbMjJtIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCB0aWR5dmVyc2UgMS4zLjAg4pSA4pSAXHUwMDFiWzM5bVxuXHUwMDFiWzM3bVx1MDAxYlszMm3inJNcdTAwMWJbMzdtIFx1MDAxYlszNG1nZ3Bsb3QyXHUwMDFiWzM3bSAzLjMuMyAgICAgXHUwMDFiWzMybeKck1x1MDAxYlszN20gXHUwMDFiWzM0bXB1cnJyICBcdTAwMWJbMzdtIDAuMy40XG5cdTAwMWJbMzJt4pyTXHUwMDFiWzM3bSBcdTAwMWJbMzRtdGliYmxlIFx1MDAxYlszN20gMy4wLjYgICAgIFx1MDAxYlszMm3inJNcdTAwMWJbMzdtIFx1MDAxYlszNG1kcGx5ciAgXHUwMDFiWzM3bSAxLjAuMlxuXHUwMDFiWzMybeKck1x1MDAxYlszN20gXHUwMDFiWzM0bXRpZHlyICBcdTAwMWJbMzdtIDEuMS4yICAgICBcdTAwMWJbMzJt4pyTXHUwMDFiWzM3bSBcdTAwMWJbMzRtc3RyaW5nclx1MDAxYlszN20gMS40LjBcblx1MDAxYlszMm3inJNcdTAwMWJbMzdtIFx1MDAxYlszNG1yZWFkciAgXHUwMDFiWzM3bSAxLjMuMSAgICAgXHUwMDFiWzMybeKck1x1MDAxYlszN20gXHUwMDFiWzM0bWZvcmNhdHNcdTAwMWJbMzdtIDAuNS4wXHUwMDFiWzM5bVxuXHUwMDFiWzM3beKUgOKUgCBcdTAwMWJbMW1Db25mbGljdHNcdTAwMWJbMjJtIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCB0aWR5dmVyc2VfY29uZmxpY3RzKCkg4pSA4pSAXG5cdTAwMWJbMzFteFx1MDAxYlszN20gXHUwMDFiWzM0bWRwbHlyXHUwMDFiWzM3bTo6XHUwMDFiWzMybWZpbHRlcigpXHUwMDFiWzM3bSBtYXNrcyBcdTAwMWJbMzRtc3RhdHNcdTAwMWJbMzdtOjpmaWx0ZXIoKVxuXHUwMDFiWzMxbXhcdTAwMWJbMzdtIFx1MDAxYlszNG1kcGx5clx1MDAxYlszN206Olx1MDAxYlszMm1sYWcoKVx1MDAxYlszN20gICAgbWFza3MgXHUwMDFiWzM0bXN0YXRzXHUwMDFiWzM3bTo6bGFnKClcdTAwMWJbMzltXG4ifQ== -->
+<!-- rnb-output-begin eyJkYXRhIjoiUmVnaXN0ZXJlZCBTMyBtZXRob2RzIG92ZXJ3cml0dGVuIGJ5ICdkYnBseXInOlxuICBtZXRob2QgICAgICAgICBmcm9tXG4gIHByaW50LnRibF9sYXp5ICAgICBcbiAgcHJpbnQudGJsX3NxbCAgICAgIFxuXHUwMDFiWzM3beKUgOKUgCBcdTAwMWJbMW1BdHRhY2hpbmcgcGFja2FnZXNcdTAwMWJbMjJtIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCB0aWR5dmVyc2UgMS4zLjAg4pSA4pSAXHUwMDFiWzM5bVxuXHUwMDFiWzM3bVx1MDAxYlszMm3inJNcdTAwMWJbMzdtIFx1MDAxYlszNG1nZ3Bsb3QyXHUwMDFiWzM3bSAzLjMuMyAgICAgXHUwMDFiWzMybeKck1x1MDAxYlszN20gXHUwMDFiWzM0bXB1cnJyICBcdTAwMWJbMzdtIDAuMy40XG5cdTAwMWJbMzJt4pyTXHUwMDFiWzM3bSBcdTAwMWJbMzRtdGliYmxlIFx1MDAxYlszN20gMy4wLjYgICAgIFx1MDAxYlszMm3inJNcdTAwMWJbMzdtIFx1MDAxYlszNG1kcGx5ciAgXHUwMDFiWzM3bSAxLjAuMlxuXHUwMDFiWzMybeKck1x1MDAxYlszN20gXHUwMDFiWzM0bXRpZHlyICBcdTAwMWJbMzdtIDEuMS4yICAgICBcdTAwMWJbMzJt4pyTXHUwMDFiWzM3bSBcdTAwMWJbMzRtc3RyaW5nclx1MDAxYlszN20gMS40LjBcblx1MDAxYlszMm3inJNcdTAwMWJbMzdtIFx1MDAxYlszNG1yZWFkciAgXHUwMDFiWzM3bSAxLjMuMSAgICAgXHUwMDFiWzMybeKck1x1MDAxYlszN20gXHUwMDFiWzM0bWZvcmNhdHNcdTAwMWJbMzdtIDAuNS4wXHUwMDFiWzM5bVxuXHUwMDFiWzM3beKUgOKUgCBcdTAwMWJbMW1Db25mbGljdHNcdTAwMWJbMjJtIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCB0aWR5dmVyc2VfY29uZmxpY3RzKCkg4pSA4pSAXG5cdTAwMWJbMzFteFx1MDAxYlszN20gXHUwMDFiWzM0bWRwbHlyXHUwMDFiWzM3bTo6XHUwMDFiWzMybWZpbHRlcigpXHUwMDFiWzM3bSBtYXNrcyBcdTAwMWJbMzRtc3RhdHNcdTAwMWJbMzdtOjpmaWx0ZXIoKVxuXHUwMDFiWzMxbXhcdTAwMWJbMzdtIFx1MDAxYlszNG1kcGx5clx1MDAxYlszN206Olx1MDAxYlszMm1sYWcoKVx1MDAxYlszN20gICAgbWFza3MgXHUwMDFiWzM0bXN0YXRzXHUwMDFiWzM3bTo6bGFnKClcdTAwMWJbMzltXG4ifQ== -->
 <pre><code>Registered S3 methods overwritten by 'dbplyr':
   method         from
   print.tbl_lazy     
   print.tbl_sql      
-[37m── [1mAttaching packages[22m ───────────────────────────────────────────── tidyverse 1.3.0 ──[39m
+[37m── [1mAttaching packages[22m ───────────────────────────────────────────────────────────── tidyverse 1.3.0 ──[39m
 [37m[32m✓[37m [34mggplot2[37m 3.3.3     [32m✓[37m [34mpurrr  [37m 0.3.4
 [32m✓[37m [34mtibble [37m 3.0.6     [32m✓[37m [34mdplyr  [37m 1.0.2
 [32m✓[37m [34mtidyr  [37m 1.1.2     [32m✓[37m [34mstringr[37m 1.4.0
 [32m✓[37m [34mreadr  [37m 1.3.1     [32m✓[37m [34mforcats[37m 0.5.0[39m
-[37m── [1mConflicts[22m ──────────────────────────────────────────────── tidyverse_conflicts() ──
+[37m── [1mConflicts[22m ──────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 [31mx[37m [34mdplyr[37m::[32mfilter()[37m masks [34mstats[37m::filter()
 [31mx[37m [34mdplyr[37m::[32mlag()[37m    masks [34mstats[37m::lag()[39m</code></pre>
 <!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0d2QoXCIvVXNlcnMvdGltbW9yYWxlcy9Eb2N1bWVudHMvR2l0SHViL05GTF9Db3ZlcmFnZS9uZmwtYmlnLWRhdGEtYm93bC0yMDIxXCIpXG5wbGF5ZXIgPC0gcmVhZC5jc3YoXCJwbGF5ZXJzLmNzdlwiKVxucGxheXMgPC0gcmVhZC5jc3YoXCJwbGF5cy5jc3ZcIilcbmRmIDwtIHJlYWQuY3N2KFwiZG93bkFORGRpc3QuY3N2XCIpXG5gYGAifQ== -->
+<pre class="r"><code>setwd(&quot;/Users/timmorales/Documents/GitHub/NFL_Coverage/nfl-big-data-bowl-2021&quot;)
+player &lt;- read.csv(&quot;players.csv&quot;)
+plays &lt;- read.csv(&quot;plays.csv&quot;)
+df &lt;- read.csv(&quot;downANDdist.csv&quot;)</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<div id="to-do-list" class="section level1">
+<h1>To Do List</h1>
+<ul>
+<li>Identify reciever formations (bunch, trips, etc)</li>
+<li>Identify press coverage</li>
+<li>Identify closest reciever</li>
+<li>Identify the field vs the boundary or the X/Y reciever</li>
+</ul>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGYgPC0gIGRmICU+JVxuICBtdXRhdGUoXG4gICAgcmJzID0gc3Vic3RyKHBlcnNvbm5lbE8sIHN0cl9sb2NhdGUocGVyc29ubmVsTywgXCJSQlwiKS0gMyxzdHJfbG9jYXRlKHBlcnNvbm5lbE8sIFwiUkJcIiktMiksXG4gICAgdGVzID0gc3Vic3RyKHBlcnNvbm5lbE8sIHN0cl9sb2NhdGUocGVyc29ubmVsTywgXCJURVwiKS0gMyxzdHJfbG9jYXRlKHBlcnNvbm5lbE8sIFwiVEVcIiktMiksXG4gICAgd3JzID0gc3Vic3RyKHBlcnNvbm5lbE8sIHN0cl9sb2NhdGUocGVyc29ubmVsTywgXCJXUlwiKS0gMyxzdHJfbG9jYXRlKHBlcnNvbm5lbE8sIFwiV1JcIiktMiksXG4gICAgZGJzID0gc3Vic3RyKHBlcnNvbm5lbE8sIHN0cl9sb2NhdGUocGVyc29ubmVsRCwgXCJEQlwiKS0gMyxzdHJfbG9jYXRlKHBlcnNvbm5lbEQsIFwiREJcIiktMiksXG4gICAgbGJzID0gc3Vic3RyKHBlcnNvbm5lbE8sIHN0cl9sb2NhdGUocGVyc29ubmVsRCwgXCJMQlwiKS0gMyxzdHJfbG9jYXRlKHBlcnNvbm5lbEQsIFwiTEJcIiktMiksXG4gICAgZGxzID0gc3Vic3RyKHBlcnNvbm5lbE8sIHN0cl9sb2NhdGUocGVyc29ubmVsRCwgXCJETFwiKS0gMyxzdHJfbG9jYXRlKHBlcnNvbm5lbEQsIFwiRExcIiktMiksXG4gICAgY29udmVydGVkID0gaWZlbHNlKHlhcmRzVG9HbyA8PSBwbGF5UmVzdWx0LCAxLDApLFxuICAgIHNvYiA9IGlmZWxzZShwb3NpdGlvbiAlaW4lIGMoXCJGU1wiLCBcIlNTXCIsXCJDQlwiLCBcIk1MQlwiLCBcIk9MQlwiLCBcIkRCXCIsIFwiREVcIiwgXCJEVFwiLCBcIklMQlwiLFwiTEJcIiwgXCJTXCIsIFwiTlRcIiksXCJkXCIsXCJvXCIpLFxuICAgIG9mZmVuc2VfaG9tZSA9IGlmZWxzZSgoKHNvYiA9PSBcIm9cIiAmIHRlYW0gPT0gXCJob21lXCIpIHwgKHNvYiA9PSBcImRcIiAmIHRlYW0gPT0gXCJhd2F5XCIpKSwxLCAwKSlcblxubGV2ZWxzKGFzLmZhY3RvcihkZiRwb3NpdGlvbikpXG5gYGAifQ== -->
+<pre class="r"><code>df &lt;-  df %&gt;%
+  mutate(
+    rbs = substr(personnelO, str_locate(personnelO, &quot;RB&quot;)- 3,str_locate(personnelO, &quot;RB&quot;)-2),
+    tes = substr(personnelO, str_locate(personnelO, &quot;TE&quot;)- 3,str_locate(personnelO, &quot;TE&quot;)-2),
+    wrs = substr(personnelO, str_locate(personnelO, &quot;WR&quot;)- 3,str_locate(personnelO, &quot;WR&quot;)-2),
+    dbs = substr(personnelO, str_locate(personnelD, &quot;DB&quot;)- 3,str_locate(personnelD, &quot;DB&quot;)-2),
+    lbs = substr(personnelO, str_locate(personnelD, &quot;LB&quot;)- 3,str_locate(personnelD, &quot;LB&quot;)-2),
+    dls = substr(personnelO, str_locate(personnelD, &quot;DL&quot;)- 3,str_locate(personnelD, &quot;DL&quot;)-2),
+    converted = ifelse(yardsToGo &lt;= playResult, 1,0),
+    sob = ifelse(position %in% c(&quot;FS&quot;, &quot;SS&quot;,&quot;CB&quot;, &quot;MLB&quot;, &quot;OLB&quot;, &quot;DB&quot;, &quot;DE&quot;, &quot;DT&quot;, &quot;ILB&quot;,&quot;LB&quot;, &quot;S&quot;, &quot;NT&quot;),&quot;d&quot;,&quot;o&quot;),
+    offense_home = ifelse(((sob == &quot;o&quot; &amp; team == &quot;home&quot;) | (sob == &quot;d&quot; &amp; team == &quot;away&quot;)),1, 0))
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiTkZMIERhdGEgQ2xlYW5pbmciCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCmBgYHtyfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKc2V0d2QoIi9Vc2Vycy90aW1tb3JhbGVzL0RvY3VtZW50cy9HaXRIdWIvTkZMX0NvdmVyYWdlL25mbC1iaWctZGF0YS1ib3dsLTIwMjEiKQpwbGF5ZXIgPC0gcmVhZC5jc3YoInBsYXllcnMuY3N2IikKcGxheXMgPC0gcmVhZC5jc3YoInBsYXlzLmNzdiIpCgp0aGlyZF9hbmRfbG9uZyA8LSBwbGF5cyAlPiUKICBmaWx0ZXIoZG93biA9PSAzICYgeWFyZHNUb0dvID4gNykKCncxIDwtIHJlYWQuY3N2KCJ3ZWVrMS5jc3YiKQp3MSA8LSB3MSAlPiUKICBmaWx0ZXIoZXZlbnQgPT0gImJhbGxfc25hcCIpCgp3ZWVrMXRhbCA8LSBsZWZ0X2pvaW4odGhpcmRfYW5kX2xvbmcsIHcxLCBieSA9IGMoInBsYXlJZCIsICJnYW1lSWQiKSkKCgp3MiA8LSByZWFkLmNzdigid2VlazIuY3N2IikKdzMgPC0gcmVhZC5jc3YoIndlZWszLmNzdiIpCnc0IDwtIHJlYWQuY3N2KCJ3ZWVrNC5jc3YiKQp3NSA8LSByZWFkLmNzdigid2VlazUuY3N2IikKdzYgPC0gcmVhZC5jc3YoIndlZWs2LmNzdiIpCnc3IDwtIHJlYWQuY3N2KCJ3ZWVrNy5jc3YiKQp3OCA8LSByZWFkLmNzdigid2VlazguY3N2IikKdzkgPC0gcmVhZC5jc3YoIndlZWs5LmNzdiIpCncxMCA8LSByZWFkLmNzdigid2VlazEwLmNzdiIpCncxMSA8LSByZWFkLmNzdigid2VlazExLmNzdiIpCncxMiA8LSByZWFkLmNzdigid2VlazEyLmNzdiIpCncxMyA8LSByZWFkLmNzdigid2VlazEzLmNzdiIpCncxNCA8LSByZWFkLmNzdigid2VlazE0LmNzdiIpCncxNSA8LSByZWFkLmNzdigid2VlazE1LmNzdiIpCncxNiA8LSByZWFkLmNzdigid2VlazE2LmNzdiIpCgoKCmBgYAo=</div>
+levels(as.factor(df$position))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIkNCXCIgIFwiREJcIiAgXCJERVwiICBcIkRUXCIgIFwiRkJcIiAgXCJGU1wiICBcIkhCXCIgIFwiSUxCXCIgXCJMQlwiICBcIk1MQlwiIFwiTlRcIiAgXCJPTEJcIiBcIlFCXCIgIFwiUkJcIiAgXCJTXCIgICBcIlNTXCIgXG5bMTddIFwiVEVcIiAgXCJXUlwiIFxuIn0= -->
+<pre><code> [1] &quot;CB&quot;  &quot;DB&quot;  &quot;DE&quot;  &quot;DT&quot;  &quot;FB&quot;  &quot;FS&quot;  &quot;HB&quot;  &quot;ILB&quot; &quot;LB&quot;  &quot;MLB&quot; &quot;NT&quot;  &quot;OLB&quot; &quot;QB&quot;  &quot;RB&quot;  &quot;S&quot;   &quot;SS&quot; 
+[17] &quot;TE&quot;  &quot;WR&quot; </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+</div>
+
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiTkZMIERhdGEgQ2xlYW5pbmciCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCmBgYHtyfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKc2V0d2QoIi9Vc2Vycy90aW1tb3JhbGVzL0RvY3VtZW50cy9HaXRIdWIvTkZMX0NvdmVyYWdlL25mbC1iaWctZGF0YS1ib3dsLTIwMjEiKQpwbGF5ZXIgPC0gcmVhZC5jc3YoInBsYXllcnMuY3N2IikKcGxheXMgPC0gcmVhZC5jc3YoInBsYXlzLmNzdiIpCmRmIDwtIHJlYWQuY3N2KCJkb3duQU5EZGlzdC5jc3YiKQpgYGAKCiMgVG8gRG8gTGlzdCAKCiogSWRlbnRpZnkgcmVjaWV2ZXIgZm9ybWF0aW9ucyAoYnVuY2gsIHRyaXBzLCBldGMpCiogSWRlbnRpZnkgcHJlc3MgY292ZXJhZ2UgCiogSWRlbnRpZnkgY2xvc2VzdCByZWNpZXZlcgoqIElkZW50aWZ5IHRoZSBmaWVsZCB2cyB0aGUgYm91bmRhcnkgb3IgdGhlIFgvWSByZWNpZXZlciAKCgpgYGB7cn0KZGYgPC0gIGRmICU+JQogIG11dGF0ZSgKICAgIHJicyA9IHN1YnN0cihwZXJzb25uZWxPLCBzdHJfbG9jYXRlKHBlcnNvbm5lbE8sICJSQiIpLSAzLHN0cl9sb2NhdGUocGVyc29ubmVsTywgIlJCIiktMiksCiAgICB0ZXMgPSBzdWJzdHIocGVyc29ubmVsTywgc3RyX2xvY2F0ZShwZXJzb25uZWxPLCAiVEUiKS0gMyxzdHJfbG9jYXRlKHBlcnNvbm5lbE8sICJURSIpLTIpLAogICAgd3JzID0gc3Vic3RyKHBlcnNvbm5lbE8sIHN0cl9sb2NhdGUocGVyc29ubmVsTywgIldSIiktIDMsc3RyX2xvY2F0ZShwZXJzb25uZWxPLCAiV1IiKS0yKSwKICAgIGRicyA9IHN1YnN0cihwZXJzb25uZWxPLCBzdHJfbG9jYXRlKHBlcnNvbm5lbEQsICJEQiIpLSAzLHN0cl9sb2NhdGUocGVyc29ubmVsRCwgIkRCIiktMiksCiAgICBsYnMgPSBzdWJzdHIocGVyc29ubmVsTywgc3RyX2xvY2F0ZShwZXJzb25uZWxELCAiTEIiKS0gMyxzdHJfbG9jYXRlKHBlcnNvbm5lbEQsICJMQiIpLTIpLAogICAgZGxzID0gc3Vic3RyKHBlcnNvbm5lbE8sIHN0cl9sb2NhdGUocGVyc29ubmVsRCwgIkRMIiktIDMsc3RyX2xvY2F0ZShwZXJzb25uZWxELCAiREwiKS0yKSwKICAgIGNvbnZlcnRlZCA9IGlmZWxzZSh5YXJkc1RvR28gPD0gcGxheVJlc3VsdCwgMSwwKSwKICAgIHNvYiA9IGlmZWxzZShwb3NpdGlvbiAlaW4lIGMoIkZTIiwgIlNTIiwiQ0IiLCAiTUxCIiwgIk9MQiIsICJEQiIsICJERSIsICJEVCIsICJJTEIiLCJMQiIsICJTIiwgIk5UIiksImQiLCJvIiksCiAgICBvZmZlbnNlX2hvbWUgPSBpZmVsc2UoKChzb2IgPT0gIm8iICYgdGVhbSA9PSAiaG9tZSIpIHwgKHNvYiA9PSAiZCIgJiB0ZWFtID09ICJhd2F5IikpLDEsIDApLAogICAgeWFyZHNfdG9fZ2wgPSBpZmVsc2UocG9zc2Vzc2lvblRlYW0gPT0geWFyZGxpbmVTaWRlLCB5YXJkbGluZU51bWJlciwgKDUwICsgKDUwLXlhcmRsaW5lTnVtYmVyKSkpKQoKCnRlc3QgPC0gZGYgJT4lCiAgZ3JvdXBfYnkoImdhbWVJZCIsInBsYXlJZCIpCgpsZXZlbHMoYXMuZmFjdG9yKGRmJHBvc2l0aW9uKSkKCgpgYGA=</div>
 
 
 
