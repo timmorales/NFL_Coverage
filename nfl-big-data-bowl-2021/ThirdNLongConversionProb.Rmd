@@ -73,15 +73,7 @@ all.plays <- unique(df.o$fullid[df.o$fullid %in% df.d$fullid])
 
 df.d <- df %>%
   filter(sob == "d")
-<<<<<<< Updated upstream
 
-=======
- 
-#find all plays in both dfs
-all.plays <- unique(df.o$fullid[df.o$fullid %in% df.d$fullid])
-
-#find closest defensive player in terms of y direction at snap
->>>>>>> Stashed changes
 df.o$closest_def <- "unknown"
 for (i in 1:length(all.plays)){
   defender.list <- df.d[df.d$fullid == all.plays[i], ]
