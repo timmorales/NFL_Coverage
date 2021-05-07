@@ -69,10 +69,11 @@ df <- df %>%
 df.o <- df %>%
   filter(sob == "o")
 
-all.plays <- unique(df.o$fullid[df.o$fullid %in% df.d$fullid])
-
 df.d <- df %>%
   filter(sob == "d")
+
+all.plays <- unique(df.o$fullid[df.o$fullid %in% df.d$fullid])
+
 
 df.o$closest_def <- "unknown"
 for (i in 1:length(all.plays)){
@@ -90,7 +91,12 @@ df.matchups <- left_join(df.o, df.d[,c(29,30,40,45,59)], by = c("fullid", "close
 
 
 ```{r}
-
+# evaluating release cushion 
+df.matchups <- df.matchups %>%
+  mutate(
+    release.cusion = x.off - x.dff,
+    press_flag = ifelse(release.cusion < 5, 1, 0)
+  )
 
 
 
