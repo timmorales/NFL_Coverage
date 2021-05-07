@@ -22,9 +22,11 @@ df <- read.csv("downANDdist.csv")
 ```{r}
 df <-  df %>%
   mutate(
+    fullid = paste0(gameId, playId),
     rbs = substr(personnelO, str_locate(personnelO, "RB")- 3,str_locate(personnelO, "RB")-2),
     tes = substr(personnelO, str_locate(personnelO, "TE")- 3,str_locate(personnelO, "TE")-2),
     wrs = substr(personnelO, str_locate(personnelO, "WR")- 3,str_locate(personnelO, "WR")-2),
+    qbs = substr(personnelO, str_locate(personnelO, "QB")- 3,str_locate(personnelO, "QB")-2),
     dbs = substr(personnelO, str_locate(personnelD, "DB")- 3,str_locate(personnelD, "DB")-2),
     lbs = substr(personnelO, str_locate(personnelD, "LB")- 3,str_locate(personnelD, "LB")-2),
     dls = substr(personnelO, str_locate(personnelD, "DL")- 3,str_locate(personnelD, "DL")-2),
@@ -34,10 +36,12 @@ df <-  df %>%
     yards_to_gl = ifelse(possessionTeam == yardlineSide, yardlineNumber, (50 + (50-yardlineNumber))))
 
 
-test <- df %>%
-  group_by("gameId","playId")
+qb.loc <- df %>% 
+  group_by("fullid")%>%
+  filter(position == "QB")
 
-levels(as.factor(df$position))
+two.qb.sets <- qb.loc$fullid[which(duplicated(qb.loc[,1:2])==T)]
 
+df = df[(df$fullid %in% two.qb.sets)==F,]
 
 ```
