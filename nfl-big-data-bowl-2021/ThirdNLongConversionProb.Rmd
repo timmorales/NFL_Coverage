@@ -20,13 +20,13 @@ df <- read.csv("downANDdist.csv")
 
 
 ```{r}
+#string break downs 
 df <-  df %>%
   mutate(
-    fullid = paste0(gameId, playId),
+    fullid = paste0(playId,gameId),
     rbs = substr(personnelO, str_locate(personnelO, "RB")- 3,str_locate(personnelO, "RB")-2),
     tes = substr(personnelO, str_locate(personnelO, "TE")- 3,str_locate(personnelO, "TE")-2),
     wrs = substr(personnelO, str_locate(personnelO, "WR")- 3,str_locate(personnelO, "WR")-2),
-    qbs = substr(personnelO, str_locate(personnelO, "QB")- 3,str_locate(personnelO, "QB")-2),
     dbs = substr(personnelO, str_locate(personnelD, "DB")- 3,str_locate(personnelD, "DB")-2),
     lbs = substr(personnelO, str_locate(personnelD, "LB")- 3,str_locate(personnelD, "LB")-2),
     dls = substr(personnelO, str_locate(personnelD, "DL")- 3,str_locate(personnelD, "DL")-2),
@@ -35,13 +35,66 @@ df <-  df %>%
     offense_home = ifelse(((sob == "o" & team == "home") | (sob == "d" & team == "away")),1, 0),
     yards_to_gl = ifelse(possessionTeam == yardlineSide, yardlineNumber, (50 + (50-yardlineNumber))))
 
-
+#find odd qb sets 
 qb.loc <- df %>% 
-  group_by("fullid")%>%
-  filter(position == "QB")
+  group_by(fullid)%>%
+  filter(position == "QB")%>%
+  summarise(count = n()) %>%
+  filter(count > 1 | count == 0)
 
-two.qb.sets <- qb.loc$fullid[which(duplicated(qb.loc[,1:2])==T)]
+# drop them 
+df = df[(df$fullid %in% qb.loc$fullid)==F,]
 
-df = df[(df$fullid %in% two.qb.sets)==F,]
+```
+
+
+```{r}
+library(RANN)
+# find QBs (ball)
+qb.loc <-  df %>%
+  group_by(fullid)%>%
+  filter(position == "QB")%>%
+  select(x, y, fullid)
+
+#add where balls is
+df <- left_join(df, qb.loc, by = "fullid", suffix = c("", ".ball"))
+
+#find x dist from 
+df <- df %>% 
+  mutate(
+    y_dist_from_qb = (y - y.ball)
+  ) 
+
+
+df.o <- df %>%
+  filter(sob == "o")
+
+all.plays <- unique(df.o$fullid[df.o$fullid %in% df.d$fullid])
+
+df.d <- df %>%
+  filter(sob == "d")
+
+df.o$closest_def <- "unknown"
+for (i in 1:length(all.plays)){
+  defender.list <- df.d[df.d$fullid == all.plays[i], ]
+  dist <- as.data.frame(nn2(defender.list[,c(30)],df.o[df.o$fullid == all.plays[i],c(30)],k=1))
+ defender.list$displayName[dist$nn.idx]
+  df.o$closest_def[df.o$fullid == all.plays[i]] <- defender.list$displayName[dist$nn.idx]
+  
+  
+}
+df.d$closest_def = df.d$displayName
+
+df.matchups <- left_join(df.o, df.d[,c(29,30,40,45,59)], by = c("fullid", "closest_def"), suffix = c(".off", ".dff"))
+```
+
+
+```{r}
+
+
+
+
+
+
 
 ```
