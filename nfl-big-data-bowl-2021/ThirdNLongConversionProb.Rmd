@@ -49,6 +49,7 @@ df = df[(df$fullid %in% qb.loc$fullid)==F,]
 
 
 ```{r}
+#install.packages("RANN")
 library(RANN)
 # find QBs (ball)
 qb.loc <-  df %>%
@@ -59,12 +60,6 @@ qb.loc <-  df %>%
 #add where balls is
 df <- left_join(df, qb.loc, by = "fullid", suffix = c("", ".ball"))
 
-#find x dist from 
-df <- df %>% 
-  mutate(
-    y_dist_from_qb = (y - y.ball)
-  ) 
-
 
 df.o <- df %>%
   filter(sob == "o")
@@ -74,6 +69,7 @@ df.d <- df %>%
 
 all.plays <- unique(df.o$fullid[df.o$fullid %in% df.d$fullid])
 
+# finding closest defender
 
 df.o$closest_def <- "unknown"
 for (i in 1:length(all.plays)){
@@ -81,26 +77,47 @@ for (i in 1:length(all.plays)){
   dist <- as.data.frame(nn2(defender.list[,c(30)],df.o[df.o$fullid == all.plays[i],c(30)],k=1))
  defender.list$displayName[dist$nn.idx]
   df.o$closest_def[df.o$fullid == all.plays[i]] <- defender.list$displayName[dist$nn.idx]
-  
-  
 }
 df.d$closest_def = df.d$displayName
 
-df.matchups <- left_join(df.o, df.d[,c(29,30,40,45,59)], by = c("fullid", "closest_def"), suffix = c(".off", ".dff"))
+df.matchups <- left_join(df.o, df.d[,c(29,30,40,45,58)], by = c("fullid", "closest_def"), suffix = c(".off", ".dff"))
 ```
 
+* adjust for direction a team is going (if defneses x is larger idea)
+* create "skill player" 1 - 5 and assign then based on like "closest to sideline" 
+* i need to adjust for the score of the team on offense
 
 ```{r}
-# evaluating release cushion 
+# evaluating release cushion and adjusting y values 
 df.matchups <- df.matchups %>%
   mutate(
+    direction_equalizer = ifelse(y.off > y.dff, 1, 0),
+    y.off = ifelse(direction_equalizer == 1, y.off, -1*y.off),
+    y.dff = ifelse(direction_equalizer == 1, y.off, -1*y.dff),
+    y.ball = ifelse(direction_equalizer == 1, y.ball, -1*y.ball),
+    dist_from_qb = y.off - y.ball, 
     release.cusion = x.off - x.dff,
-    press_flag = ifelse(release.cusion < 5, 1, 0)
+    press_flag = ifelse(release.cusion < 5, 1, 0),
+    offense_score = ifelse(team == "home", preSnapHomeScore, preSnapVisitorScore),
+    defense_score = ifelse(team == "away", preSnapHomeScore, preSnapVisitorScore),
+    motion_flag = ifelse(s>1, 1, 0)
   )
 
+skill_player_layouts <- df.matchups %>%
+  group_by(gameId, playId) %>%
+  filter(position.off != "QB") %>%
+  mutate(
+         rank_to_sideline = rank(y.off)) %>%
+  select(gameId, playId, displayName, rank_to_sideline)
+
+
+df.matchups <- left_join(df.matchups, skill_player_layouts)
+
+df.matchups$rank_to_sideline[is.na(df.matchups$rank_to_sideline)] <- "QB"
+
+
+testing <- df.matchups %>%
+  pivot_wider(id_cols = c(playId,gameId), names_from = rank_to_sideline, values_from = c(x.off,y.off, displayName, position.off, x.dff, y.dff, dist_from_qb, release.cusion, motion_flag, route))
 
 
 
-
-
-```
